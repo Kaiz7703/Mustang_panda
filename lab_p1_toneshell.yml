@@ -1,0 +1,19 @@
+# PATH 1 ONLY — ToneShell / ORPHEUS handler
+# Usage: sudo ./controlServer -c config/lab_p1_toneshell.yml
+# Run during: Step 1 → Step 8 (ORPHEUS attack path)
+#
+# NOTE: wsdapi.dll shellcode hardcoded to 192.168.10.133:443 (raw TCP)
+
+toneshell:
+  host: 192.168.10.133
+  port: 443
+  enabled: true
+  encryption_type: XOR
+
+simplefileserver:
+  host: 192.168.10.133
+  port: 8080
+  mappings:
+    - prefix: /files
+      dir: /opt/mustang/payloads
+  enabled: true

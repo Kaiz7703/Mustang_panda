@@ -1,0 +1,22 @@
+# PATH 2 ONLY — PlugX / PERSEUS handler
+# Usage: sudo ./controlServer -c config/lab_p2_plugx.yml
+# Run during: Step 9 → Step 11 (PERSEUS attack path)
+#
+# NOTE: WinGUpdate.dat shellcode hardcoded to 192.168.10.133:443 (HTTPS)
+# Requires cert: /opt/mustang/certs/plugx.pem + plugx.key (run gen_certs.sh once)
+
+plugx:
+  host: 192.168.10.133
+  port: 443
+  https: true
+  cert_file: '/opt/mustang/certs/plugx.pem'
+  key_file: '/opt/mustang/certs/plugx.key'
+  enabled: true
+
+simplefileserver:
+  host: 192.168.10.133
+  port: 8080
+  mappings:
+    - prefix: /files
+      dir: /opt/mustang/payloads
+  enabled: true
